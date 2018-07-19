@@ -31,8 +31,8 @@ IF ($ChangeStatus.ReturnValue -eq "0")
 
 #Create array based on the starting order of Qlik Sense services
 
-$svcs_For_Start=@("QlikSenseRepositoryService","QlikSenseEngineService","QlikSenseProxyService","QlikSensePrintingService","QlikSenseSchedulerService", 
-"QlikSenseServiceDispatcher","QlikLoggingService")
+$svcs_For_Start=@("QlikSenseRepositoryService","QlikSenseEngineService","QlikSenseProxyService","QlikSensePrintingService",
+"QlikSenseServiceDispatcher","QlikSenseSchedulerService","QlikLoggingService")
 
 
 
