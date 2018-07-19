@@ -6,7 +6,6 @@ Get-Service "Ql*" | Format-List -Property Name
 
 $Credential=Get-Credential
 
-
 #Create array based on the stopping order of Qlik Sense services
 
 $svcs=@("QlikSenseEngineService","QlikSenseProxyService","QlikSensePrintingService","QlikSenseSchedulerService", 
@@ -16,25 +15,20 @@ $svcs=@("QlikSenseEngineService","QlikSenseProxyService","QlikSensePrintingServi
 
 $svcs | ForEach{ $svc_obj=Get-WMIObject Win32_Service -Filter "Name='$($_)'" 
 
-
 $StopStatus=$svc_obj.StopService() 
 IF ($StopStatus.ReturnValue -eq "0")
    {Write-host "The service '$svc_obj' Stopped successfully"}
-
 
 $ChangeStatus=$svc_obj.change(
 $null,$null,$null,$null,$null,$null, $Credential.UserName,$Credential.GetNetworkCredential().Password,$null,$null,$null)
 IF ($ChangeStatus.ReturnValue -eq "0")
    {Write-host "The service '$svc_obj''s name/password has been changed successfully"}
-
 }
 
 #Create array based on the starting order of Qlik Sense services
 
 $svcs_For_Start=@("QlikSenseRepositoryService","QlikSenseEngineService","QlikSenseProxyService","QlikSensePrintingService",
 "QlikSenseServiceDispatcher","QlikSenseSchedulerService","QlikLoggingService")
-
-
 
 $svcs_For_Start | ForEach{ $svc_obj=Get-WMIObject Win32_Service -Filter "Name='$($_)'" 
 
