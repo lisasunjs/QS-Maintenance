@@ -25,7 +25,7 @@ IF ($ChangeStatus.ReturnValue -eq "0")
    {Write-host "The service '$svc_obj''s name/password has been changed successfully"}
 }
 
-#Create array based on the starting order of Qlik Sense services
+##Create array based on the starting order of Qlik Sense services
 
 $svcs_For_Start=@("QlikSenseRepositoryService","QlikSenseEngineService","QlikSenseProxyService","QlikSensePrintingService",
 "QlikSenseServiceDispatcher","QlikSenseSchedulerService","QlikLoggingService")
